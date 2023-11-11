@@ -23,11 +23,14 @@ Follow these steps to get your development environment running:
 
 
 2. **Navigate to the project directory**
+    ```bash
     cd tv-shows-app
 
 3. **Install Dependencies**
+    ```bash
     npm install
 4. **Start the development server**
+    ```bash
     npm start
 
 
