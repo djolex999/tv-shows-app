@@ -1,11 +1,10 @@
-// App.js
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import ShowList from "./components/ShowList";
 import Pagination from "./components/Pagination";
-import GenreFilter from "./components/GenreFilter"; // Import GenreFilter
+import GenreFilter from "./components/GenreFilter";
 import Footer from "./components/Footer";
 import "./App.css";
 
@@ -32,6 +31,10 @@ const App = () => {
     setSearchTerm(inputValue);
   };
 
+  const resetPagination = () => {
+    setCurrentPage(1);
+  };
+
   const filteredShows = shows.filter(show => 
     (selectedGenre === "All" || show.genres.includes(selectedGenre)) &&
     show.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -51,7 +54,7 @@ const App = () => {
         setInputValue={setInputValue}
         onSearch={onSearch}
       />
-      <GenreFilter shows={shows} setSelectedGenre={setSelectedGenre} />
+      <GenreFilter shows={shows} setSelectedGenre={setSelectedGenre} resetPagination={resetPagination} />
       <ShowList shows={currentShows} searchTerm={searchTerm} />
       <Pagination
         showsPerPage={showsPerPage}
